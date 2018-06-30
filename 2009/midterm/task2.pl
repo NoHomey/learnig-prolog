@@ -42,9 +42,6 @@ mapK([[XK, YK]| T], [[X1, Y1] | R]) :- X1 is XK + 1, Y1 is YK - 100, map2(XK, YK
 %listMember([H|_], H).
 %listMember([H|T], M) :- not(H = M), listMember(T, M).
 
-append([], L, L).
-append([H|T], L, [H|R]) :- append(T, L, R).
-
-listMember(L, X) :- append(_, [X|_], L).
+listMember(L, X) :- concat(_, [X|_], L).
 
 p(X, Y, K) :- mapK(K, L), print(L), listMember(L, [X, Y]).
